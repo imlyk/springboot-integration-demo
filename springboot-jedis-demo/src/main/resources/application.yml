@@ -1,2 +1,20 @@
 server:
   port: 8888
+
+
+# 配置redis
+spring:
+  redis:
+    host: 192.168.58.212
+    port: 6379
+    password: 12345678
+    timeout: 30000
+    connect-timeout: 30000
+    # 使用Jedis连接池
+    jedis:
+      pool:
+        # 下面数值都是默认配置，写出来看而已
+        max-active: 8
+        max-idle: 8
+        max-wait: -1
+        min-idle: 0

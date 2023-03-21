@@ -2,24 +2,32 @@ package com.jedis;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.springframework.boot.test.context.SpringBootTest;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
+import javax.annotation.Resource;
 import java.time.Duration;
 
 /**
  * @ClassName: BaseTester
  * @Author: lequal
  * @Date: 2022/10/31
- * @Description: 测试基类
+ * @Description: 原始方式创建
  */
+@SpringBootTest
 public abstract class BaseTester {
 
-    public static final JedisPool pool;
+    @Resource(name = "jedisClient")
+    private JedisPool jedisPool;
+
     protected Jedis jedis = null;
 
-    static {
+    /**
+     * 原始方式
+     */
+/*    static {
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
         // 最大连接数
         jedisPoolConfig.setMaxTotal(10);
@@ -28,8 +36,8 @@ public abstract class BaseTester {
         // 最大等待时间
         jedisPoolConfig.setMaxWait(Duration.ofSeconds(300));
 
-        pool = new JedisPool(jedisPoolConfig, "192.168.58.212", 6379, 1000, "12345678");
-    }
+        pool = new JedisPool(jedisPoolConfig, "192.168.58.212", 6379, 10000, "12345678");
+    }*/
 
 
     /**
@@ -39,7 +47,7 @@ public abstract class BaseTester {
      */
     @BeforeEach
     void initJedis() {
-        jedis = pool.getResource();
+        jedis = jedisPool.getResource();
         System.out.println("初始化Jedis完成...");
     }
 
