@@ -1,11 +1,9 @@
 !.gitignore
 .idea/
-.idea
 out/
 target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+**/src/main/**/target/
+**/src/test/**/target/
 
 
 
@@ -41,7 +39,6 @@ target/
 hs_err_pid*
 
 # Maven
-/**/mvnw.cmd
+mvnw.cmd
 /**/mvnw
-/**/.mvn/wrapper/maven-wrapper.jar
-/**/.mvn/wrapper/maven-wrapper.properties
+/**/.mvn/wrapper/
