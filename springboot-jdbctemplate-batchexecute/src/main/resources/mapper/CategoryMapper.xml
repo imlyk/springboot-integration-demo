@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jdbc.mapper.CategoryMapper">
+
+
+    <insert id="batchSaveCategory" parameterType="jdbc.entity.Category">
+        INSERT INTO market_db.category(category_id, parent_id,depth,category_name, icon, level, is_leaf, category_type, remark, create_time, update_time)
+        VALUES
+        <foreach collection="list" separator="," item="item" index="index">
+            (#{item.categoryId},#{item.parentId},#{item.depth},#{item.categoryName},#{item.icon},#{item.level},#{item.leaf},#{item.categoryType},#{item.remark},#{item.createTime},#{item.updateTime})
+        </foreach>
+    </insert>
+    <update id="clearTable">
+        TRUNCATE `category`;
+    </update>
+
+</mapper>

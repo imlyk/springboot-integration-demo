@@ -1,0 +1,3 @@
+spring:
+  profiles:
+    active: dev # 设置启用什么配置文件
