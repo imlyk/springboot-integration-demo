@@ -15,7 +15,7 @@ import java.lang.reflect.Proxy;
 public class Main {
 
 
-    void testProxy() {
+    public static void main(String[] args) {
         UserServiceImpl userService = new UserServiceImpl();
         UserServiceProxyHandler userServiceProxyHandler = new UserServiceProxyHandler(userService);
         // 创建代理对象

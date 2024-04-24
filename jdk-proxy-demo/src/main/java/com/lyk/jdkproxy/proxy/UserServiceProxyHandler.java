@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
  */
 public class UserServiceProxyHandler implements InvocationHandler {
 
-    // 需要代理的真实对象
+    // 需要代理的真实接口
     private IUserService userService;
 
     public UserServiceProxyHandler(IUserService userService) {
@@ -29,6 +29,8 @@ public class UserServiceProxyHandler implements InvocationHandler {
 
         // 调用目标类中的方法
         result = method.invoke(userService, args);
+
+        System.out.println("目标对象运行结果: " + result);
 
         System.out.println("后置处理一些事情");
 
